@@ -1,6 +1,6 @@
 language:c
 
 script:
- - make test
+ - cd exercise; make test
 
 
