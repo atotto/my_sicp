@@ -17,4 +17,13 @@
 (test* "ex 1.3" 13 (f 1 2 3))
 (test* "ex 1.3" 41 (f 4 2 5))
 
+;;EXERCISE 1.4
+(define (a-plus-abs-b a b)
+  ((if (> b 0) + -) a b))
+
+(test* "ex 1.4" 3 (a-plus-abs-b 1 2))
+(test* "ex 1.4" 3 (a-plus-abs-b 1 -2))
+(test* "ex 1.4" 1 (a-plus-abs-b -1 2))
+
+
 (test-end :exit-on-failure #t)
