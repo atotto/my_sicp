@@ -8,14 +8,15 @@
 (define (sum-of-squares x y)
   (+ (square x) (square y)))
 (define (f a b c)
-  (cond ((and (<= a b) (<= a c)) (sum-of-squares b c))
-        ((and (<= c a) (<= c b)) (sum-of-squares a b))
-        (else (sum-of-squares a c))
+  (cond ((and (< a b) (< a c)) (sum-of-squares b c))
+        ((and (< b a) (< b c)) (sum-of-squares a c))
+        (else (sum-of-squares a b))
 ))
 
 (test* "ex 1.3" 25 (f 3 4 1))
 (test* "ex 1.3" 13 (f 1 2 3))
 (test* "ex 1.3" 41 (f 4 2 5))
+(test* "ex 1.3" 8 (f 2 2 2))
 
 ;;EXERCISE 1.4
 (define (a-plus-abs-b a b)
