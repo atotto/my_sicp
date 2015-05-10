@@ -1,0 +1,2 @@
+test:
+	gosh exercise/*.scm
