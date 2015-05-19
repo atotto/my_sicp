@@ -62,4 +62,7 @@
 
 ;: (sqrt 9) ; this line hang up.
 
+;;EXECISE 1.7
+
+
 (test-end :exit-on-failure #t)
