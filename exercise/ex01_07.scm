@@ -1,8 +1,9 @@
 (use gauche.test)
-(add-load-path "." :relative) 
+(add-load-path "." :relative)
 (use testutil)
 (test-start "ch1")
 
+;;EXECISE 1.7
 (define (square x) (* x x))
 
 (define (sqrt-iter guess x)

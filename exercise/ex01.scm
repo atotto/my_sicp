@@ -30,10 +30,10 @@
 ;;EXECISE 1.5
 (define (p) (p))
 
-(define (test x y)
-  (if (= x 0)
-      0
-      y))
+;(define (test x y)
+;  (if (= x 0)
+;      0
+;      y))
 
 ;; (test 0 (p)) ; this line hang up, so gosh is applicative-order evaluation (適用順序評価)
 
@@ -61,8 +61,5 @@
   (sqrt-iter 1.0 x))
 
 ;: (sqrt 9) ; this line hang up.
-
-;;EXECISE 1.7
-
 
 (test-end :exit-on-failure #t)

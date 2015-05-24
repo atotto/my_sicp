@@ -1,2 +1,2 @@
 test:
-	gosh exercise/*.scm
+	gosh exercise/run-test.scm
