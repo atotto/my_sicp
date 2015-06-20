@@ -21,11 +21,9 @@
   (define (fn n1 n2 n3) (+ n1 (* 2 n2) (* 3 n3)))
   (define (f-iter count n1 n2 n3) 
     (if (= count n)
-        (fn n1 n2 n3)
-        (f-iter (+ count 1) (fn n1 n2 n3) n1 n2)
-        ))
-  (cond ((< n 3) n)
-        (else (f-iter 3 2 1 0))))
+        n3
+        (f-iter (+ count 1) (fn n1 n2 n3) n1 n2)))
+  (f-iter 0 2 1 0))
 
 (test* "ex 1.11" 1 (f 1))
 (test* "ex 1.11" 2 (f 2))
