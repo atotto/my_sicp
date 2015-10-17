@@ -18,24 +18,16 @@
 ;; 4\sum_{j=1}^{n/2}f(x_{2j-1})+f(x_n)
 ;; \bigg]</math>
 
-(define (inc2 n) (+ n 2))
-
-(define (h a b n)
-  (/ (- b a) n))
-
-(test* "ex 1.29 h" (/ 1 100) (h 0 1 100))
-
 (define (simpson f a b n)
-  (define (rule f a b n h)
-    (define (y k)
-      (f (+ a (* k h))))
-    (* (+ (y 0)
-          (* (sum y 2 inc2 (- n 1)) 2.0)
-          (* (sum y 1 inc2 (- n 1)) 4.0)
-          (y n))
-       (/ h 3.0)))
-  (rule f a b n (h a b n)))
-
+  (define h (/ (- b a) n))
+  (define (y k) (f (+ a (* k h))))
+  (define (next n) (+ n 2))
+  (* (+ (y 0)
+        (* (sum y 2 next (- n 1)) 2.0)
+        (* (sum y 1 next (- n 1)) 4.0)
+        (y n))
+     (/ h 3.0)))
+  
 (test* "ex 1.29" 0.25 (simpson cube 0 1 100))
 
 (test-end :exit-on-failure #t)
