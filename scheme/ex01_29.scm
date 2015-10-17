@@ -30,4 +30,18 @@
 
 (test* "ex 1.29" (/ 1 4) (simpson cube 0 1 100))
 
+(define (simpson f a b n)
+  (define h (/ (- b a) n))
+  (define (y k) (f (+ a (* k h))))
+  (define (next n) (+ n 1))
+  (define (term k)
+    (* (cond ((or (= k (y 0)) (= k n)) (y n))
+             ((odd? k) 4)
+             (else 2))
+       (y k)))
+  (* (sum term 0 next n)
+     (/ h 3)))
+
+(test* "ex 1.29" (/ 1 4) (simpson cube 0 1 100))
+
 (test-end :exit-on-failure #t)
