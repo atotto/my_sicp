@@ -25,19 +25,14 @@
 
 (test* "ex 1.29 h" (/ 1 100) (h 0 1 100))
 
-(define (y f a k h)
-  (f (+ a (* k h))))
-
-(test* "ex 1.29 y" 0.0 (y cube 0   0 0.01))
-(test* "ex 1.29 y" 1.0 (y cube 0 100 0.01))
-;(test* "ex 1.29 y" (cube (/ 21 100.0)) (y cube 0  21 0.01))
-
 (define (simpson f a b n)
   (define (rule f a b n h)
-    (* (+ (y f a 0 h)
-          (* (sum f 0 inc2 (- n 1)) 2.0)
-          (* (sum f 1 inc2 (- n 1)) 4.0)
-          (y f a n h))
+    (define (y k)
+      (f (+ a (* k h))))
+    (* (+ (y 0)
+          (* (sum y 2 inc2 (- n 1)) 2.0)
+          (* (sum y 1 inc2 (- n 1)) 4.0)
+          (y n))
        (/ h 3.0)))
   (rule f a b n (h a b n)))
 
