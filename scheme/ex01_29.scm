@@ -23,11 +23,11 @@
   (define (y k) (f (+ a (* k h))))
   (define (next n) (+ n 2))
   (* (+ (y 0)
-        (* (sum y 2 next (- n 1)) 2.0)
-        (* (sum y 1 next (- n 1)) 4.0)
+        (* (sum y 2 next (- n 1)) 2)
+        (* (sum y 1 next (- n 1)) 4)
         (y n))
-     (/ h 3.0)))
-  
-(test* "ex 1.29" 0.25 (simpson cube 0 1 100))
+     (/ h 3)))
+
+(test* "ex 1.29" (/ 1 4) (simpson cube 0 1 100))
 
 (test-end :exit-on-failure #t)
