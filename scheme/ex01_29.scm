@@ -28,7 +28,7 @@
         (y n))
      (/ h 3)))
 
-(test* "ex 1.29" (/ 1 4) (simpson cube 0 1 100))
+(test* "ex 1.29" (/ 1 4) (simpson cube 0 1 10))
 
 (define (simpson f a b n)
   (define h (/ (- b a) n))
@@ -42,6 +42,6 @@
   (* (sum term 0 next n)
      (/ h 3)))
 
-(test* "ex 1.29" (/ 1 4) (simpson cube 0 1 100))
+(test* "ex 1.29" (/ 1 4) (simpson cube 0 1 10))
 
 (test-end :exit-on-failure #t)
