@@ -1,5 +1,7 @@
 (use gauche.test)
+(use math.const)
 (add-load-path "." :relative)
+(use testutil)
 (test-start "ch1")
 
 ;;EXERCISE 1.31
@@ -24,7 +26,16 @@
 (define (factorial n)
   (product identity 1 inc n))
 
-(test* "ex 1.31" 24 (factorial 4))
-(test* "ex 1.31" 120 (factorial 5))
+(test* "ex 1.31_factorial" 24 (factorial 4))
+(test* "ex 1.31_factorial" 120 (factorial 5))
+
+(define (square x) (* x x))
+
+(define (wallis x)
+  (define (term n)
+    (/ (square (* 2 n)) (* (- (* 2 n) 1) (+ (* 2 n) 1))))
+  (* (product term 1 inc x) 2))
+
+(test* "ex 1.31_wallis" pi (wallis 300) (expect-delta 1e-3))
 
 (test-end :exit-on-failure #t)
