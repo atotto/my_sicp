@@ -4,24 +4,28 @@
 (use testutil)
 (test-start "ch1")
 
-;;EXERCISE 1.31
+;;EXERCISE 1.32
 
 (define (identity x) x)
 
 (define (inc n) (+ n 1))
 
-(define (square x) (* x x))
-
 (define (cube x) (* x x x))
 
+(define (product term a next b)
+  (accumulate * 1 term a next b))
+
+(define (sum term a next b)
+  (accumulate + 0 term a next b))
+
 (define (factorial n)
-  (accumulate * 1 identity 1 inc n))
+  (product identity 1 inc n))
 
 (define (sum-integers a b)
-  (accumulate + 0 identity 1 inc b))
+  (sum identity 1 inc b))
 
 (define (sum-cubes a b)
-  (accumulate + 0 cube a inc b))
+  (sum cube a inc b))
 
 ;;recursive process
 (define (accumulate combiner null-value term a next b)
